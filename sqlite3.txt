@@ -1,0 +1,22 @@
+import sqlite3
+import os
+
+# shows where the database will be created (helps if DB not found)
+print("DB will be created at:", os.getcwd())
+
+conn = sqlite3.connect('student.db')  # connects to the database
+cursor = conn.cursor()  # lets us interact with the database #implement delete something NOT NULL MEANS NOT EMPTY
+
+student = """CREATE TABLE IF NOT EXISTS STUDENTS
+(
+STUDENT_ROLL_NO INTEGER PRIMARY KEY AUTOINCREMENT,  -- WILL AUTOMATICALLY INCREASE FIRST DATA WILL BE NUMBER 1, 2nd data number 2
+STUDENT_NAME VARCHAR(255) NOT NULL,
+STUDENT_CLASS VARCHAR(255) NOT NULL,
+STUDENT_EMAIL VARCHAR(255) NOT NULL,
+STUDENT_PHO_NUM INTEGER NOT NULL
+)"""
+
+cursor.execute(student)
+
+conn.commit()   # saves changes
+conn.close()    # closes database
